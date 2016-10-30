@@ -17,7 +17,7 @@ To get help info:
 docker run --rm dylanmei/exhibitor --help
 ```
 
-To run in production, you'll probably want to provide your own `exhibitor.properties`, and [customize the arguments](https://github.com/soabase/exhibitor/wiki/Running-Exhibitor). Something like:
+To run in production, you'll probably want to provide your own `exhibitor.properties`, and [customize the command-line arguments](https://github.com/soabase/exhibitor/wiki/Running-Exhibitor). Something like:
 
 ```
 docker run --rm \
@@ -29,7 +29,7 @@ docker run --rm \
   --volume /my.credentials:/mnt/my.credentials \
   dylanmei/exhibitor \
     --hostname $HOST \
-    --defaultconfig /mnt/my.properties
+    --defaultconfig /mnt/my.properties \
     --configtype s3 \
       --s3region us-west-2 \
       --s3credentials /mnt/my.credentials \
