@@ -1,0 +1,33 @@
+version: "3"
+
+# An example docker-compose using authentication
+# 1. Launch exhibitor and use the client tools
+#   docker-compose up
+#   docker-compose exec exhibitor bash
+#   export CLIENT_JVMFLAGS=-Djava.security.auth.login.config=/var/private/jaas.conf
+#   /usr/zookeeper/bin/zkCli.sh
+# 2. Create a znode with naive ACLs
+#   create /foo bar world:anyone:r
+#   getAcl /foo
+# 3. Try to add additional ACLs
+#   setAcl /foo world:anyone:r,sasl:admin:cdrwa
+# 4. Become super user
+#   addauth digest super:hello
+#   setAcl /foo world:anyone:r,sasl:admin:cdrwa
+#   getAcl /foo
+# 5. Profit!
+
+services:
+  exhibitor:
+    #build: .
+    image: dylanmei/exhibitor
+    environment:
+      HELLO: world
+    command: --hostname localhost --defaultconfig default.properties --configtype file
+    ports:
+    - 2181:2181
+    - 8080:8080
+    volumes:
+    - ./data:/var/lib/zookeeper
+    - ./example.properties:/usr/exhibitor/default.properties
+    - ./jaas.conf:/var/private/jaas.conf
