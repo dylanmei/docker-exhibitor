@@ -21,13 +21,11 @@ services:
   exhibitor:
     #build: .
     image: dylanmei/exhibitor
-    environment:
-      HELLO: world
     command: --hostname localhost --defaultconfig default.properties --configtype file
     ports:
     - 2181:2181
     - 8080:8080
     volumes:
-    - ./data:/var/lib/zookeeper
-    - ./example.properties:/usr/exhibitor/default.properties
-    - ./jaas.conf:/var/private/jaas.conf
+    - ./example/data:/var/lib/zookeeper
+    - ./example/default.properties:/usr/exhibitor/default.properties
+    - ./example/jaas.conf:/var/private/jaas.conf
