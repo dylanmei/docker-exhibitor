@@ -39,8 +39,9 @@ RUN mkdir -p /usr/exhibitor/lib \
 
 EXPOSE 2181 2888 3888 8080
 WORKDIR /usr/exhibitor
-COPY default.properties .
+
+ADD --chown=exhibitor:exhibitor default.properties exhibitor.properties
 
 USER exhibitor:exhibitor
 ENTRYPOINT ["java", "-jar", "lib/exhibitor.jar"]
-CMD ["--hostname", "localhost", "--defaultconfig", "default.properties", "--configtype", "file"]
+CMD ["--hostname", "localhost", "--defaultconfig", "exhibitor.properties", "--configtype", "file"]
