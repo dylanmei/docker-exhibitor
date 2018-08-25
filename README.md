@@ -27,6 +27,7 @@ docker run --rm \
   --publish 8080:8080 \
   --volume /my.properties:/mnt/my.properties \
   --volume /my.credentials:/mnt/my.credentials \
+  --init \
   dylanmei/exhibitor \
     --hostname $HOST \
     --defaultconfig /mnt/my.properties \

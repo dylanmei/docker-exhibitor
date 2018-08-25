@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 
 # An example docker-compose using authentication
 # 1. Launch exhibitor and use the client tools
@@ -21,6 +21,7 @@ services:
   exhibitor:
     #build: .
     image: dylanmei/exhibitor
+    init: true
     command: --hostname localhost --defaultconfig default.properties --configtype file
     ports:
     - 2181:2181
