@@ -1,7 +1,7 @@
 FROM openjdk:8-slim
 
-RUN groupadd -g 10001 exhibitor \
- && useradd -r -m -u 10001 -g exhibitor exhibitor \
+RUN groupadd -g 1000 exhibitor \
+ && useradd -r -m -u 1000 -g exhibitor exhibitor \
  && apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y curl ca-certificates procps \
  && apt-get clean \
